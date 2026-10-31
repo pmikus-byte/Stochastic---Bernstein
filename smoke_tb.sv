@@ -6,6 +6,12 @@ int t_thresh;
 
 initial begin
 
+int fd;
+fd = $fopen("results.csv", "w");
+
+$fdisplay(fd, "t_thresh,count");
+
+
     b[0] = 0;
     b[1] = 707;
     b[2] = 1000;
@@ -27,9 +33,12 @@ for ( t_thresh = 0; t_thresh <= 1000; t_thresh += 100) begin
         if (($urandom % 1000) < b[sel]) 
             count = count + 1;
     end
+    
+$fdisplay(fd, "%0d, %0d", t_thresh, count);
 $display("T Threshold = %0d, Count =  %0d", t_thresh, count);
 
 end
+$fclose(fd);
 $finish;
 end
 endmodule
