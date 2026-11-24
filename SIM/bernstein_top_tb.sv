@@ -18,11 +18,11 @@ module bernstein_top_tb;
             @(negedge clk);
             rst = 0;
 
-            wait (done)
+            wait (done);
             @(negedge clk);
 
             $display("T_thresh: %0d, Count: %0d", t_thresh, count);
         end
-        $finish    
+        $finish;    
     end
 endmodule
