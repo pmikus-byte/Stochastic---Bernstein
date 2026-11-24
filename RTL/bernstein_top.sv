@@ -1,5 +1,4 @@
 module bernstein_top #(
-    module bernstein_top #(
     parameter B0 = 11'd0,
     parameter B1 = 11'd724,
     parameter B2 = 11'd1024,
@@ -27,18 +26,31 @@ module bernstein_top #(
     // Adder
     assign sel = x[0] + x[1] + x[2] + x[3];
     
-    //Four coefficient SNG
+    //five coefficient SNG
     sng #(.SEED(10'd400)) u_coef0 (.clk(clk), .rst(rst), .thresh(B0), .stream(z[0]));
     sng #(.SEED(10'd500)) u_coef1 (.clk(clk), .rst(rst), .thresh(B1), .stream(z[1]));
     sng #(.SEED(10'd600)) u_coef2 (.clk(clk), .rst(rst), .thresh(B2), .stream(z[2]));
     sng #(.SEED(10'd700)) u_coef3 (.clk(clk), .rst(rst), .thresh(B3), .stream(z[3]));
     sng #(.SEED(10'd800)) u_coef4 (.clk(clk), .rst(rst), .thresh(B4), .stream(z[4]));
     
-    // 4 MUX
+    // MUX
     assign y = z[sel];
 
-    // 5. Cycle counter (always_ff): reset -> 0; else count up; done when cycles reaches 1024
 
-    // 6. Output counter (always_ff): reset -> 0; else if not done and y is 1, add 1
+    // Cycle counter that counts clock ticks up to 1024
+    always_ff @(posedge clk) begin
+        if (rst)
+            cycles <= 11'd0;     
+        else if (!done)
+            cycles <= cycles + 11'd1;
+    end
+    assign done = (cycles == 11'd1024); // done goes high after 1024 cycles
 
-)
+// output counter
+    always_ff @(posedge clk) begin
+        if (rst)
+            count <= 11'd0;          
+        else if (!done && y)
+            count <= count + 11'd1;   
+    end
+endmodule
