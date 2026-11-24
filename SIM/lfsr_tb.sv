@@ -8,7 +8,7 @@ module lfsr_tb;
 
     always #5 clk = ~clk; // flips every 5 tu
 
-    lfsr #(.SEED(SEED)) dut (.clk(clk), .rst(rst), .q(q));
+lfsr #(.SEED(SEED)) dut (.clk(clk), .rst(rst), .q(q));
 
     initial begin  
         rst = 1;
