@@ -1,1 +1,19 @@
+# compiled simulations
 *.vvp
+*.vcd
+
+# temporary testbench output (moved into results/ by hand)
+hw_func.csv
+
+# Python
+__pycache__/
+
+# Vivado project files
+*.jou
+*.log
+*.str
+.Xil/
+vivado*/
+
+# editor
+.vscode/

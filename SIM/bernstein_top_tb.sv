@@ -12,7 +12,7 @@ module bernstein_top_tb;
     .count(count), .done(done));
 
     initial begin
-        fd = $fopen("hw_results.csv", "w");
+        fd = $fopen("results/rtl_sin.csv", "w");
         $fdisplay(fd, "t_thresh,count");
 
         for (int j = 0; j <= 16; j++) begin

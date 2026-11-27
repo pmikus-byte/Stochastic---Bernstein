@@ -7,7 +7,7 @@ int t_thresh;
 initial begin
 
 int fd;
-fd = $fopen("results.csv", "w");
+fd = $fopen("results/behavioral_sin.csv", "w");
 
 $fdisplay(fd, "t_thresh,count");
 

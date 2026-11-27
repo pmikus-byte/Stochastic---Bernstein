@@ -20,7 +20,7 @@ x = np.linspace(0, 1, 501)
 fig, axes = plt.subplots(1, len(runs), figsize=(20, 3.8), sharey=True)
 
 for ax, (name, (fname, B, f)) in zip(axes, runs.items()):
-    with open("hw_results/" + fname) as fh:
+    with open("results/rtl_functions/" + fname) as fh:
         rows = list(csv.DictReader(fh))
     t  = np.array([int(r["t_thresh"]) for r in rows]) / 1024
     hw = np.array([int(r["count"]) for r in rows]) / 1024

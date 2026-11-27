@@ -45,7 +45,7 @@ file_names = {
     "tanh(x)":      "tanh",
     "sin(pi x)":    "sin_pi_x",
     "sin(2 pi x)":  "sin_2pi_x",
-    "|x - 1/2|":    "abs_kink",
+    "|x - 1/2|":    "bs_sharp_corner",
     "sqrt(x)":      "sqrt",
     "step at 1/2":  "step",
 }
