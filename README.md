@@ -24,7 +24,7 @@ Done as a CSE 320 honors contract at Arizona State University, Fall 2026.
 
 ![Sup-norm error vs n](plots/all_errors.png)
 
-The full write-up is in [`docs/report.pdf`](docs/report.pdf).
+The full write-up is in [`Report.pdf`](Report.pdf).
 
 ## How it works
 
